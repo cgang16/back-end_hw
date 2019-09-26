@@ -61,13 +61,13 @@ WebCNN 中的 python 文件如 views，models,detection,forms 实现了主要的
 在 pycharm 中运行项目后(注意需要先使用 manage.py 实现数据库的迁移)，在浏览器中(建议使用 chrome)输入地址 [http://127.0.0.1:8000/logon/](http://127.0.0.1:8000/logon/) 即可访问注册界面。或者点击界面上的"注册"也能跳转。如下所示：
 
 <center>
-<img src="screenshot/logon_page.jpg" width=600>
+<img src="picforreport/logon_page.jpg" width=600>
 </center>
 
 具体端口以 pycharm 控制台输出为准：
 
 <center>
-<img src="screenshot/console_page.jpg" width=300>
+<img src="picforreport/console_page.jpg" width=300>
 </center>
 
 在框中输入用户名以及密码即可实现注册功能，同时需要满足：
@@ -84,7 +84,7 @@ WebCNN 中的 python 文件如 views，models,detection,forms 实现了主要的
 注册成功后，会自动跳转至登陆页面，直接在浏览器中输入地址[http://127.0.0.1:8000/login/](http://127.0.0.1:8000/login/)也能访问。或者点击界面上的"登陆"也能跳转。登陆界面如下所示：
 
 <center>
-<img src="screenshot/login_page.jpg" width=600>
+<img src="picforreport/login_page.jpg" width=600>
 </center>
 
 使用已经注册成功的用户名和密码可以实现登陆。
@@ -96,13 +96,13 @@ WebCNN 中的 python 文件如 views，models,detection,forms 实现了主要的
 登陆成功后，会自动跳转至处理界面，在已经登陆的情况下在浏览器中输入[http://127.0.0.1:8000/index/](http://127.0.0.1:8000/index/)也能跳转至该页面。或者点击界面上的"主页"也能跳转。处理界面如下所示：
 
 <center>
-<img src="screenshot/index_page.jpg" width=600>
+<img src="picforreport/index_page.jpg" width=600>
 </center>
 
 在处理界面有两种方式上传图片进行处理：选取本地图片或者使用图片 URL。点击提交按钮，就可以对图片进行处理，在大约 1~2s 后页面会返回结果以及相应的提示信息。如下所示：
 
 <center>
-<img src="screenshot/process_page.jpg" width=600>
+<img src="picforreport/process_page.jpg" width=600>
 </center>
 
 左图显示了上传的原始图像，右边则是人脸识别、性别分类以及表情分类的结果。原图以及处理结果图片的相关信息都被存储起来。
@@ -114,16 +114,16 @@ WebCNN 中的 python 文件如 views，models,detection,forms 实现了主要的
 在浏览器中输入[http://127.0.0.1:8000/history/](http://127.0.0.1:8000/history/)即可访问操作历史记录界面。或者点击界面上的"历史记录"也能访问。如下所示：
 
 <center>
-<img src="screenshot/history_page.jpg" width=600>
+<img src="picforreport/history_page.jpg" width=600>
 </center>
 
 为了显示全部的组件，以上网页使用了缩放。历史记录界面显示了当前用户所有操作过的图片以及相应的处理结果。默认每个界面显示四条历史记录，不足的显示全部。点击图片前的复选框，再点击最下方的批量删除按钮可以实现批量删除。只勾选一个复选框就可以单条删除。最下方的组件可以实现翻页操作。同时页面上方的搜索组件可以输入查询时间，点击开始查询就可以得到所有满足条件的记录。
 查询操作如下所示：
 
 <center>
-<img src="screenshot/search_page1.jpg" width=600>
+<img src="picforreport/search_page1.jpg" width=600>
 
-<img src="screenshot/search_page2.jpg" width=600>
+<img src="picforreport/search_page2.jpg" width=600>
 </center>
 
 ---
@@ -139,7 +139,7 @@ WebCNN 中的 python 文件如 views，models,detection,forms 实现了主要的
 在浏览其中输入不合法 url 会返回 404 页面，服务器错误会返回 500 界面。以下展示 404 界面。
 
 <center>
-<img src="screenshot/400_page.jpg" width=600>
+<img src="picforreport/400_page.jpg" width=600>
 </center>
 
 ---
