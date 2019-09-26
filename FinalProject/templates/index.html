@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}主页{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'CSS/index.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if request.session.is_login %}
+            <div class="row">
+                <h1 class="remind_title">你好,{{ request.session.user_name }}!</h1>
+            </div>
+            <div class="row">
+                <h1 class="remind_words">欢迎使用人脸检测器(同时标注性别和表情)</h1>
+            </div>
+        {% else %}
+            <div class="row">
+                <h1 class="remind_title">您未登录，无法浏览任何内容！请登陆</h1>
+            </div>
+        {% endif %}
+        <div class="row image_row">
+            {% if request.session.is_login and image_upload %}
+                <div class="image_block">
+                    <div class="image_field">
+                        <img src="{{ image_upload.path.url }}" alt="原始图像" title="原始图像">
+                    </div>
+                    <div class="image_tag">
+                        原始图像
+                    </div>
+                </div>
+            {% endif %}
+            {% if request.session.is_login and image_upload %}
+                <div class="image_block">
+                    <div class="image_field">
+                        <img src="/media/results/{{ image_upload.filename }}{{ image_upload.id }}.jpg"
+                             alt="无处理结果">
+                    </div>
+                    <div class="image_tag">
+                        处理结果
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <form class="form-upload" action="/upload/" method="post" enctype="multipart/form-data">
+                    {% if request.session.is_login %}
+                        {% if message %}
+                            <div class="alert alert-warning">{{ message }}</div>
+                        {% endif %}
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ Upload_form.image.label_tag }}{{ Upload_form.image }}
+                        </div>
+                        <button type="reset" class="btn btn-default pull-left">重置</button>
+                        <button type="submit" name="imagebtn" class="btn btn-primary pull-right">提交</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3 col-lg-6 col-lg-offset-3">
+                <form class="form-upload" action="/upload/" method="post">
+                    {% if request.session.is_login %}
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ Url_form.url.label_tag }}{{ Url_form.url }}
+                        </div>
+                        <button type="reset" class="btn btn-default pull-left">重置</button>
+                        <button type="submit" name="urlbtn" class="btn btn-primary pull-right">提交</button>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

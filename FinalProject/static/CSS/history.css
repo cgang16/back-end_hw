@@ -1,0 +1,89 @@
+body {
+    background-color: #eee;
+}
+
+.remind_title {
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.record_row {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+}
+
+.time_row {
+    margin: auto;
+}
+
+.time_row h1 {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin: auto;
+}
+
+.image_row {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.image_block {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.search_block {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+img {
+    width: 200px;
+    border: 2px solid;
+    border-radius: 10px;
+    image-orientation: from-image;
+}
+
+.image_tag {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    text-align: center;
+    font-weight: bold;
+}
+
+button {
+    text-align: center;
+    font-weight: bold;
+    border: 0 solid;
+    border-radius: 5px;
+}
+
+.page_bar {
+    margin: auto;
+}
+
+.time_input {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+

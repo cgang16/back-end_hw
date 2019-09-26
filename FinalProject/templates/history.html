@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}历史记录{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'CSS/history.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if not request.session.is_login %}
+            <div class="row info_row">
+                <h1 class="remind_title">您未登录，无法浏览任何内容！请登陆</h1>
+            </div>
+        {% else %}
+            {% if message %}
+                <div class="alert alert-warning">{{ message }}</div>
+            {% endif %}
+            <form action="/search/" method="post">
+                {% csrf_token %}
+                {% if page_obj %}
+                    <input type="hidden" name="page_id" value="{{ page_obj.number }}">
+                {% endif %}
+                <div class="search_block">
+                    <div class="time_input">
+                        {{ Time_form.start_time.label_tag }}{{ Time_form.start_time }}
+                    </div>
+                    <div class="time_input">
+                        {{ Time_form.end_time.label_tag }}{{ Time_form.end_time }}
+                    </div>
+                    <div>
+                        <button type="submit" name="sub_btn">开始查询</button>
+                    </div>
+                    <div>
+                        <button type="reset" name="rst_btn">重置输入</button>
+                    </div>
+                </div>
+            </form>
+            {% if page_obj %}
+                <form action="/delete/" method="post">
+                    {% for image_obj in page_obj.object_list %}
+                        <div class="record_row">
+                            <div class="row time_row">
+                                <h1 class="info_title">操作时间：{{ image_obj.createtime|date:"Y-m-d H:i:s" }}</h1>
+                            </div>
+                            <div class="row image_row">
+                                {% csrf_token %}
+                                <input type="checkbox" name="del_box" value="{{ image_obj.id }}">
+                                <div class="image_block">
+                                    <div class="image_field">
+                                        <img src="{{ image_obj.path.url }}" alt="原始图像">
+                                    </div>
+                                    <div class="image_tag">
+                                        原始图像
+                                    </div>
+                                </div>
+                                <div class="image_block">
+                                    <div class="image_field">
+                                        <img src="/media/results/{{ image_obj.filename }}{{ image_obj.id }}.jpg"
+                                             alt="无处理结果">
+                                    </div>
+                                    <div class="image_tag">
+                                        处理结果
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <div class="row">
+                        <input type="hidden" name="page_id" value="{{ page_obj.number }}">
+                        <button type="submit" name="del_bths" class="center-block">批量删除</button>
+                    </div>
+                </form>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li>
+                            <a href="?page={{ page_obj.previous_page_number }}">上一页</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#">上一页</a>
+                        </li>
+                    {% endif %}
+                    {% for page_number in paginator.page_range %}
+                        {% if page_number == page_obj.number %}
+                            <li class="active">
+                                <a href="?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% else %}
+                            <li>
+                                <a href="?page={{ page_number }}">{{ page_number }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if page_obj.has_next %}
+                        <li>
+                            <a href="?page={{ page_obj.next_page_number }}">下一页</a>
+                        </li>
+                    {% else %}
+                        <li class="disabled">
+                            <a href="#">下一页</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
