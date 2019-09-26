@@ -41,7 +41,7 @@
 ## 二、整体项目结构
 
 <center>
-<img src="screenshot/structure.jpg" width=600>
+<img src="picforreport/structure.jpg" width=600>
 </center>
 
 项目名称是 FinalProject。App 名称是 WebCNN。  
